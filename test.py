@@ -1,5 +1,4 @@
 
-import unittest
 import pydoc
 from bowling_game import BowlingGame
 
@@ -97,8 +96,6 @@ class Testing(unittest.TestCase):
         self.assertEqual(len(self.game.rolls), 21)
         self.assertEqual(self.game.score(), 150)
 
-
-pydoc.writedoc('test')
 
 if __name__ == '__main__':
     unittest.main()
