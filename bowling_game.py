@@ -2,8 +2,6 @@
 Bowling Game Implementation
 A module for calculating bowling game scores.
 """
-
-
 class BowlingGame:
     def __init__(self):
         # Initialize a new game with 10 frames
@@ -100,3 +98,8 @@ class BowlingGame:
             The value of the roll after the spare
         """
         return self.rolls[frame_index + 2]
+    
+
+
+
+    
