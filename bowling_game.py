@@ -19,6 +19,12 @@ class BowlingGame:
         Args:
             pins: Number of pins knocked down in this roll
         """
+        
+        if not isinstance(pins, int):
+            raise ValueError(f"Invalid roll: {pins} (must be an integer)")
+        if pins < 0 or pins > 10:
+            raise ValueError(f"Invalid roll: {pins} (must be between 0 and 10)")
+
         self.rolls.append(pins)
         self.current_roll += 1
 

@@ -15,11 +15,13 @@ class Testing(unittest.TestCase):
     def setUp(self):
         self.game = BowlingGame()
 
+# Test basic function of roll()
     def test_single_roll(self):
         self.game.roll(5)
         self.assertEqual(self.game.rolls, [5])
         self.assertEqual(self.game.current_roll, 1)
 
+# Test multiple rolls in roll()
     def test_multiple_rolls(self):
         self.game.roll(1)
         self.game.roll(8)
@@ -27,6 +29,28 @@ class Testing(unittest.TestCase):
         self.game.roll(10)
         self.assertEqual(self.game.rolls, [1, 8, 6, 10])
         self.assertEqual(self.game.current_roll, 4)
+
+# Test if the value of a roll can exceed the number of pins
+    def test_value_over_10(self):
+        self.game.roll(11)
+        self.assertNotEqual(self.game.rolls, [11])
+
+# Test if the value of a roll can be a nagative number
+    def test_value_negative(self):
+        self.game.roll(-1)
+        self.assertNotEqual(self.game.rolls, [-1])
+
+# Test if the value of a roll can be a floating point. We need whole numbers only
+    def test_value_float(self):
+        self.game.roll(0.1)
+        self.assertNotEqual(self.game.rolls, [0.5])
+
+# Test if any values in rolls can be a string
+    def test_non_numerical(self):
+        self.game.roll("a")
+        self.game.roll("!")
+        self.assertNotIn("a", self.game.rolls)
+        self.assertNotIn("!", self.game.rolls)
 
 
 # Tests for score() function
